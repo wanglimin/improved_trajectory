@@ -1,6 +1,6 @@
 function feature = import_idt(file,tra_len)
     fid = fopen(file,'rb');
-    feat = fread(fid,[10+2*tra_len+96*3+98,inf],'float');
+    feat = fread(fid,[10+4*tra_len+96*3+108,inf],'float');
 	feature = struct('info',[],'tra',[],'tra_shape',[],'hog',[],'hof',[],'mbhx',[],'mbhy',[]);
 	if ~isempty(feat)
 		feature.info = feat(1:10,:);
