@@ -285,7 +285,7 @@ int main(int argc, char** argv)
 						fwrite(&temp,sizeof(temp),1,outfile);
 					
 						// output trajectory point coordinates
- 				    for (int i=0; i< trackInfo.length; ++ i){
+ 				                for (int i=0; i< trackInfo.length; ++ i){
 							temp = trajectory1[i].x;
 							fwrite(&temp,sizeof(temp),1,outfile);
 							temp = trajectory1[i].y;
@@ -343,11 +343,11 @@ int main(int argc, char** argv)
 
 		frame_num++;
 
-								if( show_track == 1 ) {
-							imshow( "DenseTrackStab", image);
-							c = cvWaitKey(3);
-							if((char)c == 27) break;
-						}
+		if( show_track == 1 ) {
+			imshow( "DenseTrackStab", image);
+			c = cvWaitKey(3);
+			if((char)c == 27) break;
+		}
 
 
 	}
