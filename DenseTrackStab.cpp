@@ -266,7 +266,7 @@ int main(int argc, char** argv)
 						if(show_track == 1 && iScale == 0)
 							DrawTrack(iTrack->point, iTrack->index, fscales[iScale], image);
 
-						// output the trajectory
+						// output the basic information
 						fwrite(&frame_num,sizeof(frame_num),1,outfile);
 						fwrite(&mean_x,sizeof(mean_x),1,outfile);
 						fwrite(&mean_y,sizeof(mean_y),1,outfile);
@@ -285,7 +285,7 @@ int main(int argc, char** argv)
 						fwrite(&temp,sizeof(temp),1,outfile);
 					
 						// output trajectory point coordinates
-           				for (int i=0; i< trackInfo.length; ++ i){
+ 				    for (int i=0; i< trackInfo.length; ++ i){
 							temp = trajectory1[i].x;
 							fwrite(&temp,sizeof(temp),1,outfile);
 							temp = trajectory1[i].y;
