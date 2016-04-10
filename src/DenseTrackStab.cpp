@@ -13,17 +13,17 @@ int main(int argc, char** argv)
 	const char* keys =
 		{
 			"{ f  | video_file     | test.avi | filename of video }"
-			"{ o  | idt_file   | test.bin | filename of flow x component }"
-			"{ L  | track_length   | 15 | filename of flow x component }"
-			"{ S  | start_frame     | 0 | filename of flow image}"
-			"{ E  | end_frame | 1000000 | specify the maximum of optical flow}"
-			"{ W  | min_distance | 5 | specify the optical flow algorithm }"
-			"{ N  | patch_size   | 32  | set gpu id}"
-			"{ s  | nxy_cell  | 2 | specify the step for frame sampling}"
-			"{ t  | nt_cell  | 3 | specify the step for frame sampling}"
-			"{ A  | scale_num  | 8 | specify the step for frame sampling}"
-			"{ I  | init_gap  | 1 | specify the step for frame sampling}"
-			"{ T  | show_track | 0 | specify the step for frame sampling}"
+			"{ o  | idt_file   | test.bin | filename of idt features }"
+			"{ L  | track_length   | 15 | the length of trajectory }"
+			"{ S  | start_frame     | 0 | start frame of tracking }"
+			"{ E  | end_frame | 1000000 | end frame of tracking }"
+			"{ W  | min_distance | 5 | min distance }"
+			"{ N  | patch_size   | 32  | patch size }"
+			"{ s  | nxy_cell  | 2 | descriptor parameter }"
+			"{ t  | nt_cell  | 3 | discriptor parameter }"
+			"{ A  | scale_num  | 8 | num of scales }"
+			"{ I  | init_gap  | 1 | gap }"
+			"{ T  | show_track | 0 | whether show tracks}"
 		};
 	CommandLineParser cmd(argc, argv, keys);
 	string video = cmd.get<string>("video_file");
