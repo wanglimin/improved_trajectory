@@ -14,6 +14,7 @@ int main(int argc, char** argv)
 		{
 			"{ f  | video_file     | test.avi | filename of video }"
 			"{ o  | idt_file   | test.bin | filename of idt features }"
+			"{ r  | tra_file   | tra.bin  | filename of track files  }"
 			"{ L  | track_length   | 15 | the length of trajectory }"
 			"{ S  | start_frame     | 0 | start frame of tracking }"
 			"{ E  | end_frame | 1000000 | end frame of tracking }"
@@ -28,6 +29,7 @@ int main(int argc, char** argv)
 	CommandLineParser cmd(argc, argv, keys);
 	string video = cmd.get<string>("video_file");
 	string out_file = cmd.get<string>("idt_file");
+	string tra_file = cmd.get<string>("tra_file");
 	track_length = cmd.get<int>("track_length");
 	start_frame = cmd.get<int>("start_frame");
 	end_frame = cmd.get<int>("end_frame");
@@ -38,7 +40,8 @@ int main(int argc, char** argv)
 	scale_num = cmd.get<int>("scale_num");
 	init_gap = cmd.get<int>("init_gap");
 
-	FILE* outfile = fopen(out_file.c_str(),"wb");
+	FILE* outfile = fopen(out_file.c_str(), "wb");
+	FILE* trafile = fopen(tra_file.c_str(), "wb");
 
 	VideoCapture capture;
 	capture.open(video);
@@ -287,10 +290,11 @@ int main(int argc, char** argv)
 						// output trajectory point coordinates
  				                for (int i=0; i< trackInfo.length; ++ i){
 							temp = trajectory1[i].x;
-							fwrite(&temp,sizeof(temp),1,outfile);
+							fwrite(&temp, sizeof(temp), 1, outfile);
+							fwrite(&temp, sizeof(temp), 1, trafile);
 							temp = trajectory1[i].y;
-							fwrite(&temp,sizeof(temp),1,outfile);
-
+							fwrite(&temp, sizeof(temp), 1, outfile);
+							fwrite(&temp, sizeof(temp), 1, trafile);
 						}
               
 						// output the trajectory features
@@ -356,6 +360,7 @@ int main(int argc, char** argv)
 		destroyWindow("DenseTrackStab");
 
 	fclose(outfile);
+	fclose(trafile);
 //	fclose(flowx);
 //	fclose(flowy);
 
